@@ -1,5 +1,5 @@
 """
-Implementation of the Perceptron algorithm. Testing on boolean OR function
+Implementation of the Perceptron algorithm. Learns the boolean OR function
 """
 
 import random
