@@ -4,10 +4,12 @@ Implementation of the Perceptron algorithm. Testing on boolean OR function
 
 import random
 
+# We will use this to multiply input and weight vectors
 def dotProduct(m1, m2):
     product = sum([(m1[i] * m2[i]) for i in range(len(m1))])
     return product
 
+# Returns 1/0 based on dot product
 def sgnActivation(w, x):
     wx = dotProduct(w, x)
     if wx > 0:
@@ -39,6 +41,7 @@ weights = [[round(random.uniform(-1, 1), 3),
 """
                           --- Training ---
 """
+
 iterations = 0
 learning_rate = 0.25
 not_accurate = True
@@ -46,6 +49,7 @@ m = len(X)
 while not_accurate:
     iterations += 1
     corrects = 0
+    # Looping through each pair of weights and inputs
     for i in range(m):
         y = sgnActivation(X[i], weights[i])
         t = targets[i]
@@ -54,6 +58,7 @@ while not_accurate:
         else:
             diff = y - t
             for n in range(2):
+                # Updating weights based on difference between target and actual output
                 weights[i][n] -= learning_rate * diff * X[i][n]
     if corrects == 4:
         # Recall
