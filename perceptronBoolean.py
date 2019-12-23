@@ -1,5 +1,5 @@
 """
-Implementation of the Perceptron algorithm. Learns the boolean OR function
+Implementation of the Perceptron algorithm. Learns the  boolean OR function
 """
 
 import random
@@ -16,7 +16,6 @@ def sgnActivation(w, x):
         return 1
     else:
         return 0
-
 
 """
                           --- Initialisation ---
@@ -60,11 +59,14 @@ while not_accurate:
             for n in range(2):
                 # Updating weights based on difference between target and actual output
                 weights[i][n] -= learning_rate * diff * X[i][n]
+                print('\nCurrent Weights: ', weights)
+                print('Current Activations: ', [sgnActivation(weights[i], X[i]) for i in range(m)])
+
     if corrects == 4:
         # Recall
-        print('Weights: ', weights)
+        print('\nFinal Weights: ', weights)
         print('Iterations: ', iterations)
-        print([sgnActivation(weights[i], X[i]) for i in range(m)])
+        print('Final Activations: ',[sgnActivation(weights[i], X[i]) for i in range(m)])
         not_accurate = False
     else:
         continue
