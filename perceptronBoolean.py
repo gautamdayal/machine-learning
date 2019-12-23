@@ -59,14 +59,15 @@ while not_accurate:
             for n in range(2):
                 # Updating weights based on difference between target and actual output
                 weights[i][n] -= learning_rate * diff * X[i][n]
-                print('\nCurrent Weights: ', weights)
-                print('Current Activations: ', [sgnActivation(weights[i], X[i]) for i in range(m)])
+            print('\n',iterations)
+            print('Current Weights: ', weights)
+            print('Current Activations: ', [sgnActivation(weights[i], X[i]) for i in range(m)])
 
     if corrects == 4:
         # Recall
-        print('\nFinal Weights: ', weights)
-        print('Iterations: ', iterations)
-        print('Final Activations: ',[sgnActivation(weights[i], X[i]) for i in range(m)])
+        print('\n• Final Weights: ', weights)
+        print('• Iterations: ', iterations)
+        print('• Final Activations: ',[sgnActivation(weights[i], X[i]) for i in range(m)])
         not_accurate = False
     else:
         continue
