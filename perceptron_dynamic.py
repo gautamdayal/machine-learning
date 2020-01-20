@@ -1,5 +1,7 @@
 """
 Implementation of the Perceptron algorithm. Learns the  boolean OR function
+
+Has a dynamic learning rate. Decreases every epoch (iteration)
 """
 
 import random
