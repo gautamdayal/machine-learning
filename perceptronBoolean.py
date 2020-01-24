@@ -34,9 +34,10 @@ targets = [0, 1, 1, 1]
 
 # Initialising each weight such that -1 < w < 1
 # W_ij where i = input value; j = input dimension
-weights = [[round(random.uniform(-1, 1), 3),
-            round(random.uniform(-1, 1), 3)] for item in X]
+# weights = [[round(random.uniform(-1, 1), 3),
+#             round(random.uniform(-1, 1), 3)] for item in X]
 
+weights = [round(random.uniform(-1, 1), 3),round(random.uniform(-1, 1), 3)]
 """
                           --- Training ---
 """
@@ -50,7 +51,7 @@ while not_accurate:
     corrects = 0
     # Looping through each pair of weights and inputs
     for i in range(m):
-        y = sgnActivation(X[i], weights[i])
+        y = sgnActivation(X[i], weights)
         t = targets[i]
         if y == t:
             corrects += 1
@@ -58,16 +59,16 @@ while not_accurate:
             diff = y - t
             for n in range(2):
                 # Updating weights based on difference between target and actual output
-                weights[i][n] -= learning_rate * diff * X[i][n]
+                weights[n] -= learning_rate * diff * X[i][n]
             print('\n',iterations)
             print('Current Weights: ', weights)
-            print('Current Activations: ', [sgnActivation(weights[i], X[i]) for i in range(m)])
+            print('Current Activations: ', [sgnActivation(weights, X[i]) for i in range(m)])
 
     if corrects == 4:
         # Recall
         print('\n• Final Weights: ', weights)
         print('• Iterations: ', iterations)
-        print('• Final Activations: ',[sgnActivation(weights[i], X[i]) for i in range(m)])
+        print('• Final Activations: ',[sgnActivation(weights, X[i]) for i in range(m)])
         not_accurate = False
     else:
         continue
