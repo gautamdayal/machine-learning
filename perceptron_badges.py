@@ -1,4 +1,5 @@
 import random
+import matplotlib.pyplot as plt
 
 data = [name.rstrip('\n') for name in open('badges.data.txt', 'r').readlines()]
 labels = [s[0] for s in data]
@@ -71,7 +72,6 @@ def train(X, Y, iter_limit):
                 for n in range(len(X[0])):
                     weights[n] -= learning_rate * diff * X[i][n]
 
-
         if corrects == m or iterations == iter_limit:
             inaccurate = False
             return weights
@@ -95,4 +95,7 @@ def score(X, Y, W):
             corrects += 1
     return(corrects/checks * 100)
 
-score(X_test, Y_test, train(X_train, Y_train, 10))
+# Trying to plot accuracy against #iterations to see optimal parameters.
+iterations = [n for n in range(2, 100)]
+plt.plot(iterations, [score(X_test, Y_test, train(X_train, Y_train, i)) for i in iterations])
+plt.show()
