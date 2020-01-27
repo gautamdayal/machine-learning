@@ -38,15 +38,14 @@ targets = [0, 1, 1, 1]
 #             round(random.uniform(-1, 1), 3)] for item in X]
 
 weights = [round(random.uniform(-1, 1), 3),round(random.uniform(-1, 1), 3)]
-"""
-                          --- Training ---
-"""
+
+# Training
 
 iterations = 0
 learning_rate = 0.25
 not_accurate = True
 m = len(X)
-while not_accurate:
+while iterations <= 10:
     iterations += 1
     corrects = 0
     # Looping through each pair of weights and inputs
@@ -60,11 +59,11 @@ while not_accurate:
             for n in range(2):
                 # Updating weights based on difference between target and actual output
                 weights[n] -= learning_rate * diff * X[i][n]
-            print('\n',iterations)
-            print('Current Weights: ', weights)
-            print('Current Activations: ', [sgnActivation(weights, X[i]) for i in range(m)])
+        print('\n',iterations)
+        print('Current Weights: ', weights)
+        print('Current Activations: ', [sgnActivation(weights, X[i]) for i in range(m)])
 
-    if corrects == 4:
+    if iterations == 10:
         # Recall
         print('\n• Final Weights: ', weights)
         print('• Iterations: ', iterations)
