@@ -14,7 +14,7 @@ def sgnActivation(w, x):
     wx = dotProduct(w, x)
     if wx > 0:
         return 1
-    else:
+    else:   
         return 0
 
 """
