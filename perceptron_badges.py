@@ -56,6 +56,7 @@ def train(X, Y, iter_limit):
     iterations = 0
     learning_rate = 0.1
     weights = [round(random.uniform(-1, 1), 3) for n in X[0]]
+    bias = -1
 
     m = len(X)
     inaccurate = True
@@ -71,12 +72,14 @@ def train(X, Y, iter_limit):
                 diff = y - prediction
                 for n in range(len(X[0])):
                     weights[n] -= learning_rate * diff * X[i][n]
+                    bias += learning_rate * diff
 
         if corrects == m or iterations == iter_limit:
             inaccurate = False
             return weights
 
         learning_rate = learning_rate / (1 + iterations)
+        print(iterations, weights)
 
 # Returns '+' or '-' depending on what weights the train() function learned. Will be used in score()
 def predict(x, w):
