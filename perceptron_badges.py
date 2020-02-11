@@ -64,7 +64,7 @@ def train(X, Y, iter_limit):
         iterations += 1
         corrects = 0
         for i in range(m):
-            prediction = sgnActivation(weights, X[i])
+            prediction = sgnActivation(weights, X[i]) + bias
             y = Y[i]
             if prediction == y:
                 corrects += 1
