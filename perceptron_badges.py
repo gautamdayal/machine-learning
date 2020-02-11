@@ -72,7 +72,7 @@ def train(X, Y, iter_limit):
                 diff = y - prediction
                 for n in range(len(X[0])):
                     weights[n] -= learning_rate * diff * X[i][n]
-                    bias += learning_rate * diff
+                bias += learning_rate * diff
 
         if corrects == m or iterations == iter_limit:
             inaccurate = False
