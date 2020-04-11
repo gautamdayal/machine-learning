@@ -56,15 +56,16 @@ def train(X, Y, iter_limit):
     iterations = 0
     learning_rate = 0.1
     weights = [round(random.uniform(-1, 1), 3) for n in X[0]]
-    bias = -1
 
     m = len(X)
     inaccurate = True
     while inaccurate:
+        # Everything printer:
+        print(f'{iterations} Weights: {weights} Bias: {bias}')
         iterations += 1
         corrects = 0
         for i in range(m):
-            prediction = sgnActivation(weights, X[i]) + bias
+            prediction = sgnActivation(weights, X[i])
             y = Y[i]
             if prediction == y:
                 corrects += 1
