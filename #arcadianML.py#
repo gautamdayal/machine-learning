@@ -12,7 +12,7 @@ class Perceptron(object):
             wx = dotProduct(w, x)
             if wx > 0:
                 return 1
-            else:
+OB            else:
                 return
 
         bias = 1
