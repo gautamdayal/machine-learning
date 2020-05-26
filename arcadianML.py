@@ -17,7 +17,7 @@ class Perceptron(object):
             if wx > 0:
                 return 1
             else:
-                return
+                return 0
 
         bias = 1
         weights = [0 for n in range(len(self.X[0]))]
