@@ -102,3 +102,5 @@ def IterativeDichotomiser3(data, dataset, features, parent_node = None):
         return(tree)
 
 pprint(IterativeDichotomiser3(data, data, ['outlook', 'temperature', 'humidity', 'wind']))
+
+# comment to test discord webhook
